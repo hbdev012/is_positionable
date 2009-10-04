@@ -8,6 +8,7 @@ module IsPositionable
         :model              => options[:controller] || controller_name,
         :action             => :positionable,
         :scope              => nil,
+        :filter_by          => nil,
         :redirect_to        => :back,
         :param              => :move,
         :set_default_scope  => true
@@ -22,10 +23,10 @@ module IsPositionable
     # It will determine whether to use a plain find
     # or whether to use a find through an association
     def find(id)
-      if scope.nil?
+      if filtered_scope.nil?
         model.find(id)
       else
-        scope.send(model_association_name).find(id)
+        filtered_scope.send(model_association_name).find(id)
       end
     end
     
@@ -33,16 +34,21 @@ module IsPositionable
     # It will determine whether to use a plain find
     # or whether to use a find through an association
     def find_last_id
-      if scope.nil?
+      if filtered_scope.nil?
         model.all.last.id 
       else
-        scope.send(model_association_name).last.id
+        filtered_scope.send(model_association_name).last.id
       end
     end
     
     # Returns the value of the :redirect_to attribute
     def redirect
       options[:redirect_to]
+    end
+    
+    # Returns the value of the :filter_by attribute
+    def filtered_scope
+      options[:filter_by]
     end
     
     # Returns the value of the :scope attribute
