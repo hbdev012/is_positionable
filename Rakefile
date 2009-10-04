@@ -4,14 +4,19 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "ip"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.name = "is_positionable"
+    gem.summary = %Q{Handles positioning (ordering) your ActiveRecord Objects.}
+    gem.description = %Q{
+                          Handles positioning (ordering) your ActiveRecord Objects.
+                          Makes use of the "Acts As List" plugin for the optimized background handling of the positioning.
+                          "Is Positionable" is a front-end that dynamically generates buttons for moving ActiveRecord Objects
+                          "up", "down", to the "top" and to the "bottom". Setting it up takes just 1 word: "is_positionable".
+                        }
     gem.email = "meskyan@gmail.com"
-    gem.homepage = "http://github.com/meskyanichi/ip"
+    gem.homepage = "http://github.com/meskyanichi/is_positionable"
     gem.authors = ["meskyanichi"]
-    gem.add_development_dependency "thoughtbot-shoulda"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency "acts_as_list"
+#    gem.files.include 'lib/**/*'
   end
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
