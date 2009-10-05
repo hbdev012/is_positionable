@@ -1,8 +1,25 @@
 = Is Positionable
 
-= Don't use this gem just yet!
-== Still working out some bugs.
-== Working version will be up soon! 
+== What is "Is Positionable"?
+
+Handles positioning (ordering) your ActiveRecord Objects. Makes use of the "Acts As List" plugin for the optimized background handling of the positioning.
+"Is Positionable" is a front-end that dynamically generates buttons for moving ActiveRecord Objects "up", "down", to the "top" and to the "bottom". Setting it up takes just 1 word: "is_positionable".
+
+
+== Check out the following Wiki pages
+
+=== Installation
+
+http://wiki.github.com/meskyanichi/is_positionable/installation
+
+
+=== Getting Started
+
+http://wiki.github.com/meskyanichi/is_positionable/getting-started
+
+
+
+
 
 == Copyright
 
