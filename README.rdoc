@@ -45,8 +45,18 @@ This would look something like this
   
   # Assuming that "current_user" is the currently logged in use
 
+The above will ensure that, not only will one users' post NOT conflict with another users' post,
+but if one user tries to be hack-ish and try to attempt to change post position of a different user through cURL or the AddressBar
+it will be out of scope cause of the :scope_object attribute, restricting access to any other user, but the owner of the post. 
 
-== Check out the following Wiki pages
+==== Of course, these are not the only options you can set, for more information, see the Wiki pages!
+
+==== Setting all this up takes me about 1-2 minutes
+
+
+== Interested in trying out "Is Positionable"?
+
+=== Check out the following Wiki pages:
 
 === Installation
 
