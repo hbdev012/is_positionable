@@ -6,6 +6,7 @@ Is Positionable handles the positioning (ordering) your ActiveRecord Objects. It
 
 === Some quick examples
 
+
 ==== app/controllers/posts_controller.rb
 
   PostsController < ApplicationController
