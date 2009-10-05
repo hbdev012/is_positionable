@@ -4,6 +4,29 @@
 
 Is Positionable handles the positioning (ordering) your ActiveRecord Objects. It makes use of the "Acts As List" gem to do it the most efficient way. Is Positionable basically creates a front-end (dynamically generates buttons and actions) for moving ActiveRecord Objects "up", "down", to the "top" and to the "bottom". Doing the simplest set up takes just 1 word: "is_positionable".
 
+=== Some quick examples
+
+  PostsController < ApplicationController
+    is_positionable
+    
+    def index
+      @posts = Post.all
+    end
+    ...
+  end
+
+==== app/views/posts/index.html.erb
+
+  for post in @posts
+    <%= up_button_for_posts(@posts, post) %>
+    <%= down_button_for_posts(@posts, post) %>
+    <%= top_button_for_posts(@posts, post) %>
+    <%= bottom_button_for_posts(@posts, post) %>
+    ...
+    # Other Stuff like post.name post.user.name etc.
+  end
+
+
 
 == Check out the following Wiki pages
 
