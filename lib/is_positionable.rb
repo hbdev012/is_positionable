@@ -43,7 +43,7 @@ module IsPositionable
         end
         
         # Sets the default scope to order by the specified column
-        default_scope :order => interface.column if interface.set_default_scope?
+        # default_scope :order => interface.column if interface.set_default_scope?
                 
       end
       
