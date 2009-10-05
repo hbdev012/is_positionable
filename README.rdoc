@@ -78,6 +78,9 @@ http://wiki.github.com/meskyanichi/is_positionable/installation
 http://wiki.github.com/meskyanichi/is_positionable/getting-started
 
 
+=== Options
+
+http://wiki.github.com/meskyanichi/is_positionable/options
 
 
 

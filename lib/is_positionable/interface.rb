@@ -10,8 +10,8 @@ module IsPositionable
         :scope              => nil,
         :scope_object       => nil,
         :redirect_to        => :back,
-        :param              => :move,
-        :set_default_scope  => true
+        :param              => :move
+      #  :set_default_scope  => true
       }.update(options))
     end
     
@@ -89,9 +89,9 @@ module IsPositionable
     
     # Returns a boolean
     # Determines whether the :set_default_scope attribute was set
-    def set_default_scope?
-      true if options[:set_default_scope].eql?(true)
-    end
+    #def set_default_scope?
+    #  true if options[:set_default_scope].eql?(true)
+    #end
     
     # Require additional gems
     # When the "ignore_error" argument is set to "true" (default)
