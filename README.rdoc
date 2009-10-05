@@ -17,6 +17,12 @@ Is Positionable handles the positioning (ordering) your ActiveRecord Objects. It
     ...
   end
 
+==== app/models/post.rb
+
+  class Post < ActiveRecord::Base
+    default_scope :order => :position
+  end
+
 ==== app/views/posts/index.html.erb
 
   for post in @posts
