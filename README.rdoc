@@ -6,6 +6,10 @@ Is Positionable handles the positioning (ordering) your ActiveRecord Objects. It
 
 === Quick and Simple Example
 
+==== config/environment.rb
+
+  config.gem "is_positionable", :source => "http://gemcutter.org/"
+
 ==== app/controllers/posts_controller.rb
 
   PostsController < ApplicationController
