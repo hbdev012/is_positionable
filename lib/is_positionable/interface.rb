@@ -8,7 +8,7 @@ module IsPositionable
         :model              => options[:controller] || controller_name,
         :action             => :positionable,
         :scope              => nil,
-        :filter_by          => nil,
+        :scope_object       => nil,
         :redirect_to        => :back,
         :param              => :move,
         :set_default_scope  => true
@@ -23,37 +23,25 @@ module IsPositionable
     # It will determine whether to use a plain find
     # or whether to use a find through an association
     def find(id)
-      if filtered_scope.nil?
+      if scope_object.nil?
         model.find(id)
       else
-        filtered_scope.send(model_association_name).find(id)
+        scope_object.send(model_association_name).find(id)
       end
     end
-    
-    # Finds the last id of a list of records
-    # It will determine whether to use a plain find
-    # or whether to use a find through an association
-    def find_last_id
-      if filtered_scope.nil?
-        model.all.last.id 
-      else
-        filtered_scope.send(model_association_name).last.id
-      end
-    end
-    
+
     # Returns the value of the :redirect_to attribute
     def redirect
       options[:redirect_to]
     end
-    
-    # Returns the value of the :filter_by attribute
-    def filtered_scope
-      options[:filter_by]
-    end
-    
+        
     # Returns the value of the :scope attribute
     def scope
       options[:scope]
+    end
+    
+    def scope_object
+      options[:scope_object]
     end
     
     # Returns the model Class which can be invoked using class methods    

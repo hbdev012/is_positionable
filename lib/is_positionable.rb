@@ -112,7 +112,7 @@ module IsPositionable
     
       # Injects the "UP" button for the view helpers into the controller
       # This will be available to all views within the specified controller
-      define_method "up_button_for_#{interface.controller_name}" do |object, *options|
+      define_method "up_button_for_#{interface.controller_name}" do |objects, object, *options|
       
         # Set default options and overwrite the existing ones with
         # possible user input
@@ -128,13 +128,13 @@ module IsPositionable
             :id             => "up_button_for_#{interface.controller_name.singularize}_#{object.id}",
             :class          => "up_button_for_#{interface.controller_name}" }
         }.update(options.empty? ? {} : options.first)
-      
-        button_to(options[:name], options[:url], options[:html]) unless object.first?
+        
+        button_to(options[:name], options[:url], options[:html]) unless objects.first.eql?(object)
       end
       
       # Injects the "DOWN" button for the view helpers into the controller
       # This will be available to all views within the specified controller
-      define_method "down_button_for_#{interface.controller_name}" do |object, *options|
+      define_method "down_button_for_#{interface.controller_name}" do |objects, object, *options|
       
         # Set default options and overwrite the existing ones with
         # possible user input
@@ -151,22 +151,12 @@ module IsPositionable
             :class          => "down_button_for_#{interface.controller_name}" }
         }.update(options.empty? ? {} : options.first)
         
-        # Ensures that the last id will only be found once
-        # and not for each object that comes through the loop
-        unless defined?(@ip_last)
-          @ip_last = interface.find_last_id
-        end
-        
-        # Ensures that the last "Down" button will not be displayed
-        # since you can't go lower than the lowest position
-        unless @ip_last.eql?(object.id)
-          button_to(options[:name], options[:url], options[:html])
-        end
+        button_to(options[:name], options[:url], options[:html]) unless objects.last.eql?(object)
       end
     
       # Injects the "TOP" button for the view helpers into the controller
       # This will be available to all views within the specified controller
-      define_method "top_button_for_#{interface.controller_name}" do |object, *options|
+      define_method "top_button_for_#{interface.controller_name}" do |objects, object, *options|
       
         # Set default options and overwrite the existing ones with
         # possible user input
@@ -183,12 +173,12 @@ module IsPositionable
             :class          => "top_button_for_#{interface.controller_name}" }
         }.update(options.empty? ? {} : options.first)
       
-        button_to(options[:name], options[:url], options[:html]) unless object.first?
+        button_to(options[:name], options[:url], options[:html]) unless objects.first.eql?(object)
       end
            
       # Injects the "BOTTOM" button for the view helpers into the controller
       # This will be available to all views within the specified controller
-      define_method "bottom_button_for_#{interface.controller_name}" do |object, *options|
+      define_method "bottom_button_for_#{interface.controller_name}" do |objects, object, *options|
       
         # Set default options and overwrite the existing ones with
         # possible user input
@@ -204,18 +194,8 @@ module IsPositionable
             :id             => "bottom_button_for_#{interface.controller_name.singularize}_#{object.id}",
             :class          => "bottom_button_for_#{interface.controller_name}" }
         }.update(options.empty? ? {} : options.first)
-        
-        # Ensures that the last id will only be found once
-        # and not for each object that comes through the loop
-        unless defined?(@ip_last)
-          @ip_last = interface.find_last_id
-        end
-        
-        # Ensures that the last "Down" button will not be displayed
-        # since you can't go lower than the lowest position
-        unless @ip_last.eql?(object.id)
-          button_to(options[:name], options[:url], options[:html])
-        end
+
+        button_to(options[:name], options[:url], options[:html]) unless objects.last.eql?(object)
       end
       
       # Makes the buttons available to the views that belong to the
