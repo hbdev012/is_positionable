@@ -38,6 +38,13 @@ This might already be obvious, but the following 4 buttons are generated per pos
 Now, this is the most basic setup. You might have "users" manage posts. So that'd mean "User has_many :posts".
 In this case you can add a "scope" and "scope_object" so that one user cannot conflict with another user's post positions.
 
+This would look something like this
+
+  is_listable :scope        => :user_id,
+              :scope_object => current_user
+  
+  # Assuming that "current_user" is the currently logged in use
+
 
 == Check out the following Wiki pages
 
